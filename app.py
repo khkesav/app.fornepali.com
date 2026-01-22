@@ -11,7 +11,6 @@ Usage:
 
 from flask import Flask
 from app.routes import routes
-from flask_cors import CORS
 
 class Main:
     """
