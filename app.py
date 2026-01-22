@@ -44,13 +44,15 @@ class Main:
         initialize the application.
         """
 
+        import os
         app = Flask(__name__)
         # The secret key is used by Flask to encrypt session cookies and other security-related tasks.
         app.secret_key = '4589CC-2KJDHSALNLDAS-398567-2KJDSALDAS'
         app.register_blueprint(routes)
 
-        # Run the flask.
-        app.run(debug=False, host='0.0.0.0', port=5000)
+        # Use PORT env variable if set (for Railway), else default to 5000
+        port = int(os.environ.get("PORT", 5000))
+        app.run(debug=False, host='0.0.0.0', port=port)
 
 if __name__ == "__main__":
 
