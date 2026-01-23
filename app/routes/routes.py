@@ -11,13 +11,16 @@ routes = Blueprint("routes", __name__)
 # Controllers
 controller = Controller()
 
-@routes.route("/")
 @routes.before_request
 def restrict_host():
-    allowed_host = "fornepal.com"
+    allowed_hosts = ["fornepal.com", "app.fornepali.com"]
     host_header = request.headers.get("Host", "")
-    if not (host_header == allowed_host or host_header.endswith(".fornepal.com")):
+    # Remove port if present (e.g., app.fornepali.com:8080)
+    host = host_header.split(":")[0]
+    if host not in allowed_hosts:
         return "Forbidden: Invalid Host", 403
+
+@routes.route("/")
 def index():
     """
     Renders the dashboard page of application.
