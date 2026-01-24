@@ -1,4 +1,4 @@
-# Railway deployment instructions for this Flask app
+# For Nepali App
 
 ## 1. Environment Variables
 - Railway automatically sets the `PORT` environment variable. Update your app to use this port if available.
