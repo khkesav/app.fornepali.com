@@ -62,8 +62,11 @@ def convert_date():
     """
     data = request.get_json(silent=True)
     if data:
-        date = data.get("date")
-        target = data.get("target")
+        year = data.get("year")
+        month = data.get("month")
+        day = data.get("day")
+        date = f"{year}-{month}-{day}"
+        target = data.get("from")
     else:
         year = request.form.get("year")
         month = request.form.get("month")
