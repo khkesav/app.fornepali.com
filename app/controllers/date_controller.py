@@ -12,16 +12,16 @@ class DateController:
 
             Args:
                 date (str): The date string to be converted.
-                target (str): The target calendar system (e.g., 'nepali', 'gregorian').
+                target (str): The target calendar system (e.g., 'en-np', 'np-en').
         """
-        if target == "nepali":
+        if target == "en-np":
             converted_date = converter.ad_to_bs(date)
             return jsonify({
                 "original_date": date,
                 "converted_date": converted_date,
                 "target": target
             })
-        elif target == "gregorian":
+        elif target == "np-en":
             converted_date = converter.bs_to_ad(date)
             return jsonify({
                 "original_date": date,
